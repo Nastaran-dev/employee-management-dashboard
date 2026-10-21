@@ -2,7 +2,7 @@ function createAbortError(signal: AbortSignal | undefined): unknown {
   return signal?.reason ?? new DOMException('The request was aborted', 'AbortError');
 }
 
-/** Resolves after `ms`, or rejects immediately if `signal` aborts first. */
+
 export function delay(ms: number, signal?: AbortSignal): Promise<void> {
   return new Promise<void>((resolve, reject) => {
     if (signal?.aborted) {

@@ -8,23 +8,20 @@ import { ApiError } from './errors';
 
 export type MockOperation = 'list' | 'create' | 'update';
 
-/** The subset of the Web Storage API the mock needs, so tests can inject a fake. */
+
 export interface StorageLike {
   getItem(key: string): string | null;
   setItem(key: string, value: string): void;
 }
 
 export interface MockEmployeeApiOptions {
-  /** Where to persist changes. `null` keeps everything in memory only. */
+  
   storage?: StorageLike | null;
   storageKey?: string;
   seed?: readonly Employee[];
-  /** Simulated network latency applied to every request. */
+  
   latencyMs?: number;
-  /**
-   * Deterministic failure injection: the next N calls of an operation reject
-   * with a NETWORK error. Use `Infinity` to fail every call.
-   */
+  
   failures?: Partial<Record<MockOperation, number>>;
   now?: () => Date;
   generateId?: () => string;
@@ -67,7 +64,7 @@ export function createMockEmployeeApi(options: MockEmployeeApiOptions = {}): Emp
       const parsed = storedEmployeesSchema.safeParse(JSON.parse(raw));
       return parsed.success ? parsed.data : null;
     } catch {
-      // Unreadable storage or invalid JSON: fall back to the seed data.
+     
       return null;
     }
   }
@@ -85,7 +82,7 @@ export function createMockEmployeeApi(options: MockEmployeeApiOptions = {}): Emp
     try {
       storage.setItem(storageKey, JSON.stringify(employees));
     } catch {
-      // Quota exceeded or storage disabled: keep working in memory.
+      // Quota 
     }
   }
 
@@ -143,7 +140,7 @@ export function createMockEmployeeApi(options: MockEmployeeApiOptions = {}): Emp
         throw new ApiError('DUPLICATE_EMAIL', `Email already in use: ${data.email}`);
       }
 
-      // `id` and `createdAt` always come from the stored record, never from input.
+  
       const updated: Employee = { ...existing, ...data, updatedAt: now().toISOString() };
       persist(employees.map((employee) => (employee.id === id ? updated : employee)));
       return copy(updated);

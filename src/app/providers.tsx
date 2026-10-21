@@ -6,7 +6,6 @@ import { createQueryClient } from '@/lib/queryClient';
 
 interface AppProvidersProps {
   children: ReactNode;
-  /** Injected in tests; defaults to the browser mock adapter. */
   api?: EmployeeApi;
   queryClient?: QueryClient;
 }

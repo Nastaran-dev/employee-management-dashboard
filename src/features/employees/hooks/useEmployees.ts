@@ -7,7 +7,6 @@ export const employeeKeys = {
   list: () => [...employeeKeys.all, 'list'] as const,
 };
 
-/** Server state. Passing `signal` lets TanStack Query cancel superseded requests. */
 export function useEmployeesQuery() {
   const api = useEmployeeApi();
 
@@ -17,12 +16,6 @@ export function useEmployeesQuery() {
   });
 }
 
-/**
- * Mutation strategy: pessimistic. The cache is only touched after the server
- * confirms, then the list is refetched. Returning the invalidation promise keeps
- * the mutation pending until fresh data is in, so the UI never closes a dialog
- * on top of stale rows.
- */
 export function useCreateEmployee() {
   const api = useEmployeeApi();
   const queryClient = useQueryClient();

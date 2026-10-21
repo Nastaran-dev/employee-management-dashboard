@@ -11,8 +11,7 @@ interface FormFieldProps {
   id: string;
   label: string;
   error?: string;
-  className?: string;
-  /** Receives the id and ARIA props that wire the control to its label and error. */
+  className?: string; 
   children: (control: FieldControlProps) => ReactNode;
 }
 

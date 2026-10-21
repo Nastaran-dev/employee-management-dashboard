@@ -5,11 +5,6 @@ export const DEFAULT_FILTERS: EmployeeFilters = { search: '', department: 'all',
 const DEFAULT_SORT: SortState = { key: 'name', direction: 'asc' };
 const DEFAULT_PAGE_SIZE: PageSize = 10;
 
-/**
- * Local UI state for the table. Filtered, sorted and paged lists are derived
- * from this plus the server data on each render, so there is nothing to sync.
- * Every setter that changes the result set also returns to page 1.
- */
 export function useEmployeeTableState() {
   const [filters, setFilters] = useState<EmployeeFilters>(DEFAULT_FILTERS);
   const [sort, setSort] = useState<SortState>(DEFAULT_SORT);

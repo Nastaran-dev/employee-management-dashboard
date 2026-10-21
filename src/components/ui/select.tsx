@@ -6,10 +6,7 @@ export interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   wrapperClassName?: string;
 }
 
-/**
- * A styled native <select>. Native controls give us keyboard support, mobile
- * pickers and screen-reader behavior for free.
- */
+
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select(
   { className, wrapperClassName, children, ...props },
   ref,

@@ -5,15 +5,7 @@ const ONCE_SUFFIX = '-once';
 
 type MockRuntimeConfig = Pick<MockEmployeeApiOptions, 'latencyMs' | 'failures'>;
 
-/**
- * Reads development switches from the URL so error states can be reproduced
- * without code changes:
- *   ?simulate=list          every list request fails
- *   ?simulate=list-once     only the first list request fails (note: the query client
- *                           retries once on its own, so this one is masked in the UI)
- *   ?simulate=create,update comma-separated; each may end in "-once"
- *   ?latency=0              override the simulated latency in milliseconds
- */
+
 export function parseMockConfig(search: string): MockRuntimeConfig {
   const params = new URLSearchParams(search);
   const config: MockRuntimeConfig = {};

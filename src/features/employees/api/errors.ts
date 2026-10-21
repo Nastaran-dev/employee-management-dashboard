@@ -14,7 +14,6 @@ export function isApiError(error: unknown): error is ApiError {
   return error instanceof ApiError;
 }
 
-/** User-facing copy. The raw `error.message` stays available for debugging. */
 export function getErrorMessage(error: unknown): string {
   if (isApiError(error)) {
     switch (error.code) {
