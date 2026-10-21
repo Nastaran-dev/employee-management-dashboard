@@ -1,3 +1,9 @@
+import { AppProviders } from "./providers";
+
 export function App() {
-  return <h1>Roster</h1>;
+  return (
+    <AppProviders>
+      <h1>Employee Management Dashboard</h1>
+    </AppProviders>
+  );
 }
