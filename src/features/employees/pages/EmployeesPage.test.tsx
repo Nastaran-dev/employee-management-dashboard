@@ -117,7 +117,7 @@ describe('EmployeesPage: search and filters', () => {
     await user.type(screen.getByRole('searchbox', { name: 'Search employees' }), 'zzzzz');
     expect(await screen.findByText('No employees match your filters')).toBeInTheDocument();
 
-    // Two "Clear filters" buttons exist: the toolbar's and the empty state's.
+  
     const clearButtons = screen.getAllByRole('button', { name: 'Clear filters' });
     expect(clearButtons).toHaveLength(2);
     await user.click(clearButtons[1]);
@@ -130,7 +130,7 @@ describe('EmployeesPage: sorting and pagination', () => {
     const { user } = await renderLoaded();
 
     const names = () => screen.getAllByRole('row').slice(1).map((row) => within(row).getAllByRole('cell')[0]?.textContent);
-    expect(names()[0]).toContain('Liam Chen'); // default: last name ascending
+    expect(names()[0]).toContain('Liam Chen');
 
     await user.click(screen.getByRole('button', { name: 'Employee' }));
     expect(names()[0]).toContain('Sofia Rossi');
@@ -145,7 +145,7 @@ describe('EmployeesPage: sorting and pagination', () => {
     expect(screen.getByText('Page 2 of 2')).toBeInTheDocument();
     expect(screen.queryByText('Test User 01')).not.toBeInTheDocument();
 
-    // "user 1" matches 01, 10, 11 and 12: fewer than one page, so page 2 would be empty.
+    
     await user.type(screen.getByRole('searchbox', { name: 'Search employees' }), 'user 1');
 
     expect(screen.getByText('Test User 01')).toBeInTheDocument();
@@ -227,7 +227,7 @@ describe('EmployeesPage: create', () => {
     expect(screen.getByRole('dialog')).toBeInTheDocument();
     expect(within(dialog).getByLabelText('First name')).toHaveValue('Jamie');
 
-    // The same submission succeeds once the simulated failure is used up.
+
     await user.click(within(dialog).getByRole('button', { name: 'Add employee' }));
     expect(await screen.findByText('Jamie Rivera')).toBeInTheDocument();
   });

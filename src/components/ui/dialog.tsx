@@ -9,11 +9,6 @@ import { cn } from '@/lib/utils';
 export const Dialog = DialogPrimitive.Root;
 export const DialogClose = DialogPrimitive.Close;
 
-/**
- * Radix handles focus trapping, focus return, Escape and aria-modal.
- * Positioning is left to the caller so the same primitive can render a
- * centered modal, a bottom sheet or a side drawer.
- */
 export const DialogContent = forwardRef<
   ElementRef<typeof DialogPrimitive.Content>,
   ComponentPropsWithoutRef<typeof DialogPrimitive.Content>

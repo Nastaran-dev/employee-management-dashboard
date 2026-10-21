@@ -27,7 +27,6 @@ function seed(
   };
 }
 
-/** 20 employees: 13 active, 4 on leave, 3 inactive across all six departments. */
 export const SEED_EMPLOYEES: readonly Employee[] = [
   seed(1, 'Amelia', 'Hart', 'Engineering', 'Active', '2021-03-08'),
   seed(2, 'Daniel', 'Okafor', 'Engineering', 'Active', '2021-09-20'),

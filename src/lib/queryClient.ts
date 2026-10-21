@@ -1,7 +1,6 @@
 import { QueryClient } from '@tanstack/react-query';
 
 interface QueryClientOptions {
-  /** Pass `false` in tests so failures surface immediately. */
   retry?: number | false;
 }
 

@@ -28,7 +28,7 @@ export function EmployeesPage() {
   const table = useEmployeeTableState();
   const [dialog, setDialog] = useState<FormDialogState>({ mode: 'closed' });
 
-  // Everything below is derived from server data + UI state on each render.
+
   const employees = query.data;
   const stats = employees ? getEmployeeStats(employees) : undefined;
   const matching = employees ? sortEmployees(filterEmployees(employees, table.filters), table.sort) : [];
@@ -38,7 +38,7 @@ export function EmployeesPage() {
   const openCreate = () => setDialog({ mode: 'create' });
 
   const addButton = (
-    // Disabled until the list loads: the duplicate-email check needs it.
+
     <Button onClick={openCreate} disabled={!employees}>
       <Plus aria-hidden="true" className="h-4 w-4" />
       Add employee
