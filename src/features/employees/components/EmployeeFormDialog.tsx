@@ -24,14 +24,21 @@ export function EmployeeFormDialog({ state, employees, onClose }: EmployeeFormDi
   return (
     <Dialog
       open={state.mode !== 'closed'}
-      // Escape, overlay clicks and the X button are ignored mid-request.
       onOpenChange={(open) => {
         if (!open && !isSubmitting) onClose();
       }}
     >
-      <DialogContent className="inset-x-0 bottom-0 max-h-[90dvh] animate-sheet-up overflow-y-auto rounded-t-xl p-5 sm:inset-x-auto sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:w-full sm:max-w-lg sm:-translate-x-1/2 sm:-translate-y-1/2 sm:animate-fade-in sm:rounded-xl sm:p-6">
-        <div className="mb-5 flex items-start justify-between gap-4">
-          <div>
+      <DialogContent
+        className={[
+          
+          'inset-x-0 bottom-0 flex max-h-[calc(100dvh-1.5rem)] animate-sheet-up flex-col overflow-hidden rounded-t-2xl',
+         
+          'sm:inset-x-auto sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:max-h-[calc(100dvh-4rem)] sm:w-[calc(100%-2rem)] sm:max-w-lg sm:-translate-x-1/2 sm:-translate-y-1/2 sm:animate-fade-in sm:rounded-xl',
+        ].join(' ')}
+      >
+       
+        <div className="flex shrink-0 items-start justify-between gap-4 px-5 pb-4 pt-5 sm:px-6 sm:pt-6">
+          <div className="min-w-0">
             <DialogTitle>{isEdit ? 'Edit employee' : 'Add employee'}</DialogTitle>
             <DialogDescription>
               {isEdit ? 'Update this employee’s details.' : 'Add a new person to the directory.'}
@@ -44,17 +51,18 @@ export function EmployeeFormDialog({ state, employees, onClose }: EmployeeFormDi
           </DialogClose>
         </div>
 
-        {state.mode !== 'closed' ? (
-          <EmployeeForm
-            // A fresh form per employee guarantees create/edit never share stale values.
-            key={employee?.id ?? 'new'}
-            employee={employee}
-            employees={employees}
-            onDone={onClose}
-            onCancel={onClose}
-            onSubmittingChange={setIsSubmitting}
-          />
-        ) : null}
+        <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 sm:px-6">
+          {state.mode !== 'closed' ? (
+            <EmployeeForm
+              key={employee?.id ?? 'new'}
+              employee={employee}
+              employees={employees}
+              onDone={onClose}
+              onCancel={onClose}
+              onSubmittingChange={setIsSubmitting}
+            />
+          ) : null}
+        </div>
       </DialogContent>
     </Dialog>
   );
