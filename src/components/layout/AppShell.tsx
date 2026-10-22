@@ -14,7 +14,7 @@ export function AppShell({ title, actions, children }: AppShellProps) {
   const [navOpen, setNavOpen] = useState(false);
 
   return (
-    <div className="min-h-dvh overflow-x-clip lg:pl-60 bg-black">
+    <div className="min-h-dvh lg:pl-60">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-surface focus:px-3 focus:py-2 focus:text-sm focus:shadow-lg"
@@ -60,7 +60,7 @@ export function AppShell({ title, actions, children }: AppShellProps) {
         {actions ? <div className="flex items-center gap-2">{actions}</div> : null}
       </header>
 
-      <main  id="main" className="mx-auto w-full min-w-0 max-w-6xl px-4 py-6 sm:px-6 lg:py-8">
+      <main id="main" className="mx-auto w-full max-w-6xl px-4 py-6 sm:px-6 lg:py-8">
         {children}
       </main>
     </div>

@@ -3,22 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-  
-  html,
   body {
-    overflow-x: hidden;
-  }
-
-  html {
-    -webkit-text-size-adjust: 100%;
-  }
-
-  body {
-    @apply m-0 min-h-dvh bg-canvas text-ink antialiased;
-  }
-
-  #root {
-    @apply min-h-dvh w-full;
+    @apply bg-canvas text-ink antialiased;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -29,13 +15,5 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
-  }
-}
-
-
-@media (max-width: 639px) {
-  html body[data-scroll-locked] {
-    margin-right: 0 !important;
-    padding-right: 0 !important;
   }
 }
